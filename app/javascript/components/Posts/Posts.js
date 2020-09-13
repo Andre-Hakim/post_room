@@ -8,7 +8,6 @@ import "./Posts.scss";
 const Post = () => {
     const [posts, setPosts] = useState([])
     const [postprepare, setPostPrepare] = useState([])
-    const [idOfPost, setIdOfPost] = useState([])
     useEffect(() => {
        
         axios
@@ -38,18 +37,14 @@ const Post = () => {
 
       const handleSubmit = (arg) => {
         arg.preventDefault();
-        
+        let jsonifyPostInfo = JSON.stringify(postprepare);
 
         const csrfToken = document.querySelector("[name=csrf-token]").content;
         axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
         axios.defaults.headers["content-type"] = "application/json";
         
         axios
-          .get("/api/v1/posts/create", {
-            "title": postprepare.title,
-            "description": postprepare.description,
-            "posty_id": "22"
-          })
+          .get("/api/v1/posts/create", { jsonifyPostInfo })
           .then((afterPost) => {
             setPosts({ ...afterPost });
             setReview({ title: "", description: "" });
