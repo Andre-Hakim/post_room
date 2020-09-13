@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple posting app
+One Post form on the left that accepts two inputs a Title and a Description.
+When you type in a title and description and hit post, the right side of the web page will get updated with a post.
 
-Things you may want to cover:
+STILL A WIP
+TO DO: 
+get axios working with a content/type: application/json.
+get posts on right to update.
+get styling corrected.
 
-* Ruby version
+This app uses
+Rails as the back end
+PostgreSQL
+React as front end
 
-* System dependencies
+axios as the request handler
+set up with sass as styling. 
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
