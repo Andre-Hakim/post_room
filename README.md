@@ -4,7 +4,7 @@
 One Post form on the left that accepts two inputs a Title and a Description.<br />
 When you type in a title and description and hit post, the right side of the web page will get updated with a post.<br />
 
-##**STILL A WIP**
+##**STILL A WIP**<br />
 ###TO DO: 
 - [ ] get axios working with a content/type: application/json.<br />
 - [ ] get posts on right to update.<br />
