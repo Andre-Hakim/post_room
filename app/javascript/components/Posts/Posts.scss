@@ -17,6 +17,12 @@ body{
     height: 100%;
     background-color: lightcoral;
     justify-content: center;
+     overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+     ::-webkit-scrollbar{
+    display:none;
+  }
 }
 .right-column{
     width: 100%;
@@ -28,7 +34,8 @@ body{
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-     ::-webkit-scrollbar{
+     
+}
+::-webkit-scrollbar{
     display:none;
   }
-}

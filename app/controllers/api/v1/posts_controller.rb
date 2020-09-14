@@ -1,4 +1,6 @@
 class Api::V1::PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  
   def index
     post = Post.all.order(created_at: :desc)
     render json: post
@@ -29,7 +31,7 @@ class Api::V1::PostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:title, :description, :posty_id)
+    params.require(:post).permit(:title, :description)
   end
 
   def post
