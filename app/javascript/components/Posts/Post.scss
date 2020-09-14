@@ -5,4 +5,11 @@
     border-radius: 5px;
     width: 75%;
     margin: 10px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+
+}
+.delete-post-button{
+    display:flex;
+    align-self: flex-end;
 }

@@ -8,6 +8,7 @@ import "./Posts.scss";
 const Post = () => {
     let [posts, setPosts] = useState([])
     const [postprepare, setPostPrepare] = useState([])
+    let [postyId, setPostId] = useState([])
     useEffect(() => {
        
         axios
@@ -18,13 +19,7 @@ const Post = () => {
             })
             .catch((response) => console.log(response));
     }, [posts.length])
-    
-    const getPosts = posts.map((post) => (
-      <IndividualPost
-        key={post.id}
-        post={post}
-      ></IndividualPost>
-    ));
+  
    
     
     const handleChange = (arg) => {
@@ -57,7 +52,27 @@ const Post = () => {
           });
       };
 
-
+      const handleremoveItem = (id) => {
+        debugger
+        
+        const csrfToken = document.querySelector("[name=csrf-token]").content;
+        axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+        axios.defaults.headers["content-type"] = "application/json";
+        axios.delete("/api/v1/posts/destroy/", {id}).then((afterDelete) => {
+          console.log(afterDelete);
+        });
+        //const newPosts = [...posts].filter(post => { return post.id !== id;});
+        
+        //setPosts(newPosts);
+      }
+    const getPosts = posts.map((post) => (
+      <IndividualPost
+        key={post.id}
+        post={post}
+        setPostId={setPostId}
+        handleremoveItem={handleremoveItem}
+      ></IndividualPost>
+    ));
     return (
       <div className="displayFlex">
         <div className="left-column">
@@ -65,11 +80,11 @@ const Post = () => {
             handleSubmit={handleSubmit}
             handleChange={handleChange}
             postprepare={postprepare}
-
           />
         </div>
-
-        <div className="right-column">{getPosts}</div>
+        <div className="right-column">
+            {getPosts}
+        </div>
       </div>
     );
     

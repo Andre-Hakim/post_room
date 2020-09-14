@@ -39,3 +39,12 @@ body{
 ::-webkit-scrollbar{
     display:none;
   }
+
+.Posts-enter {
+  opacity: 0.01;
+}
+
+.Posts-enter.posts-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
