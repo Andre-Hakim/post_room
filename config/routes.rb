@@ -2,24 +2,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'posts/index'
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       post 'posts/create'
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       get 'posts/show'
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
-      delete 'posts/destroy'
+      post 'posts/destroy'
     end
   end
 

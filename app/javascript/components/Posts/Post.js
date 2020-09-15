@@ -10,7 +10,7 @@ const Post = (props) => {
           type="button"
           className="delete-post-button"
           value="x"
-          onClick={() => props.handleremoveItem(props.post)}
+          onClick={() => props.handleremoveItem(props.post.id)}
         />
         <h3>{props.post.title}</h3>
         <p>{props.post.description}</p>

@@ -24,11 +24,15 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def destroy
-    debugger
     post = Post.find(params[:id])
   
     post.destroy
-    render json: { message: 'post deleted!' }
+    if post.destroyed?
+      post = Post.all.order(created_at: :desc)
+      render json: {message: 'Post was deleted successfully', errors: [], data: post }
+    else
+      render json: { message: 'post was not deleted deleted!' }
+    end
   end
 
   private

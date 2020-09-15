@@ -53,17 +53,14 @@ const Post = () => {
       };
 
       const handleremoveItem = (id) => {
-        debugger
         
         const csrfToken = document.querySelector("[name=csrf-token]").content;
         axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
         axios.defaults.headers["content-type"] = "application/json";
-        axios.delete("/api/v1/posts/destroy/", {id}).then((afterDelete) => {
-          console.log(afterDelete);
+        axios.post("/api/v1/posts/destroy/", {id}).then((afterDelete) => {
+          const newPosts = [...afterDelete.data.data]
+          setPosts(newPosts);
         });
-        //const newPosts = [...posts].filter(post => { return post.id !== id;});
-        
-        //setPosts(newPosts);
       }
     const getPosts = posts.map((post) => (
       <IndividualPost
